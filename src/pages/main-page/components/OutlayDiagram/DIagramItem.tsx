@@ -10,17 +10,20 @@ interface IProps {
   idx: number;
 }
 
-const DIagramItem: FC<IProps> = ( { item, idx } ) => {
-  const fullOutlay = useUser(state => state.fullOutlay);
-  const percent = Math.floor((item.balance / fullOutlay) * 1000)/10;
+const DIagramItem: FC<IProps> = ({ item, idx }) => {
+  const fullOutlay = useUser((state) => state.fullOutlay);
+  const percent = Math.floor((item.balance / fullOutlay) * 1000) / 10;
 
   return (
     <div className={styles.OutlayItem}>
       <div>
         <div className={styles.DiagramContainer}>
-          <span className={styles.Diagram} style={{ width: `${percent}%`, backgroundColor: DIAGRAM_COLORS[idx] }}></span>
-          </div>
-        <span className={styles.Percent}>{ percent } %</span>
+          <span
+            className={styles.Diagram}
+            style={{ width: `${percent}%`, backgroundColor: DIAGRAM_COLORS[idx] }}
+          ></span>
+        </div>
+        <span className={styles.Percent}>{percent} %</span>
       </div>
       <div>
         <span>{item.name}</span>
@@ -28,6 +31,6 @@ const DIagramItem: FC<IProps> = ( { item, idx } ) => {
       </div>
     </div>
   );
-}
+};
 
 export default DIagramItem;

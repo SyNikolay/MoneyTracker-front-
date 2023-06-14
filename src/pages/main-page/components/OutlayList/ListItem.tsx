@@ -20,17 +20,18 @@ const ListItem: FC<IProps> = ({ item, onClick }) => {
       </div>
       <span>{item.balance}</span>
       <span>
-        <Button 
-          variant='outlined'
-          size='small'
-          color='error'
+        <Button
+          variant="outlined"
+          size="small"
+          color="error"
           startIcon={<DeleteIcon />}
-          onClick={() => onClick(item.name)}>
-            delete
+          onClick={() => onClick(item.name)}
+        >
+          delete
         </Button>
       </span>
     </div>
   );
-}
+};
 
 export default ListItem;

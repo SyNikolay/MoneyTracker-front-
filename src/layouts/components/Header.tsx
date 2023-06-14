@@ -8,6 +8,6 @@ const Header = () => {
       <h1 className={styles.Title}>Money Tracker</h1>
     </header>
   );
-}
+};
 
 export default Header;
