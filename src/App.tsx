@@ -10,7 +10,9 @@ function App() {
     <BrowserRouter>
       <MaitLayout>
         <Routes>
-          {publicRoutes.map(el => <Route path={el.path} Component={el.component}/>)}
+          {publicRoutes.map((el) => (
+            <Route path={el.path} Component={el.component} />
+          ))}
         </Routes>
       </MaitLayout>
     </BrowserRouter>

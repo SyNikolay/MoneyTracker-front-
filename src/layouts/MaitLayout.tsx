@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Header from './components/Header';
 
-import styles from './MaitLayout.module.scss'
+import styles from './MaitLayout.module.scss';
 import NavigationMenu from './components/NavigationMenu';
 
 interface IProps {
@@ -14,9 +14,7 @@ const MaitLayout: FC<IProps> = ({ children }) => {
       <div className={styles.Header}>
         <Header />
       </div>
-      <div className={styles.Content}>
-        { children }
-      </div>
+      <div className={styles.Content}>{children}</div>
       <div className={styles.Footer}>
         <NavigationMenu />
       </div>

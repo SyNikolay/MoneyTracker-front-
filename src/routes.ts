@@ -1,25 +1,25 @@
-import { Routes } from "./utils/consts";
+import { Routes } from './utils/consts';
 
-import CategoriesPage from "./pages/categories-page/CategoriesPage";
-import MainPage from "./pages/main-page/MainPage";
-import ListPage from "./pages/list-page/ListPage";
-import DiagramPage from "./pages/diagram-page/DiagramPage";
+import CategoriesPage from './pages/categories-page/CategoriesPage';
+import MainPage from './pages/main-page/MainPage';
+import ListPage from './pages/list-page/ListPage';
+import DiagramPage from './pages/diagram-page/DiagramPage';
 
 export const publicRoutes = [
   {
     path: Routes.MAIN,
-    component: MainPage
+    component: MainPage,
   },
   {
     path: Routes.CATEGORIES,
-    component: CategoriesPage
+    component: CategoriesPage,
   },
   {
     path: Routes.LIST,
-    component: ListPage
+    component: ListPage,
   },
   {
     path: Routes.DIAGRAM,
-    component: DiagramPage
+    component: DiagramPage,
   },
-]
+];

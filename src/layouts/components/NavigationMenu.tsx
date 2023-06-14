@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { Routes } from '../../utils/consts';
 
 const NavigationMenu = () => {
-
   return (
     <div className={styles.NavigationMenu}>
       <Link to={Routes.MAIN}>main</Link>
@@ -14,6 +13,6 @@ const NavigationMenu = () => {
       <Link to={Routes.DIAGRAM}>diagram</Link>
     </div>
   );
-}
+};
 
 export default NavigationMenu;
