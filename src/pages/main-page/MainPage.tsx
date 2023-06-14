@@ -7,10 +7,9 @@ import styles from './MainPage.module.scss';
 import OutlayDiagram from './components/OutlayDiagram/OutlayDiagram';
 
 const MainPage = () => {
-
   return (
     <div className={styles.MainPage}>
-      <div style={{minHeight: '100%'}}>
+      <div style={{ minHeight: '100%' }}>
         <OutlayForm />
         <OutlayList />
       </div>
@@ -19,6 +18,6 @@ const MainPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default MainPage;

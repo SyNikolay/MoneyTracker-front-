@@ -1,7 +1,7 @@
-import axios from "axios";
-import { create } from "zustand";
-import { BASE_URL } from "../utils/consts";
-import { UserStore } from "../types/types";
+import axios from 'axios';
+import { create } from 'zustand';
+import { BASE_URL } from '../utils/consts';
+import { UserStore } from '../types/types';
 
 export const useUser = create<UserStore>((set) => ({
   fullBallance: 0,
@@ -11,17 +11,17 @@ export const useUser = create<UserStore>((set) => ({
   outlays: [],
   options: [],
   setBallance: (val) => {
-    set({fullBallance: val})
+    set({ fullBallance: val });
   },
   setOutlay: (val) => {
-    set({fullOutlay: val})
+    set({ fullOutlay: val });
   },
   getUserInfo: async () => {
     try {
       const res = await axios.get(BASE_URL + '/categories/get-all');
       set((state) => {
-        return {categories: res.data}
-      })
+        return { categories: res.data };
+      });
     } catch (e) {
       console.log(e);
     }
@@ -31,8 +31,8 @@ export const useUser = create<UserStore>((set) => ({
       set({ loading: true });
       const res = await axios.get(BASE_URL + '/categories/get-all');
       set((state) => {
-        return {categories: res.data}
-      })
+        return { categories: res.data };
+      });
     } catch (e) {
       console.log(e);
     } finally {
@@ -42,7 +42,7 @@ export const useUser = create<UserStore>((set) => ({
   fetchAllOptions: async () => {
     try {
       const res = await axios.get(BASE_URL + '/categories/get-all-categories');
-      set({options: res.data})
+      set({ options: res.data });
     } catch (e) {
       console.log(e);
     }
@@ -50,9 +50,9 @@ export const useUser = create<UserStore>((set) => ({
   fetchAllOutlays: async () => {
     try {
       const res = await axios.get(BASE_URL + '/outlays/get-all-outlays');
-      set({outlays: res.data})
+      set({ outlays: res.data });
     } catch (e) {
       console.log(e);
     }
-  }
-}))
+  },
+}));
