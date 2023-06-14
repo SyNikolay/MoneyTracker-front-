@@ -8,7 +8,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const MaitLayout: FC <IProps> = ({ children }) => {
+const MaitLayout: FC<IProps> = ({ children }) => {
   return (
     <div className={styles.Layout}>
       <div className={styles.Header}>
@@ -22,6 +22,6 @@ const MaitLayout: FC <IProps> = ({ children }) => {
       </div>
     </div>
   );
-}
+};
 
 export default MaitLayout;

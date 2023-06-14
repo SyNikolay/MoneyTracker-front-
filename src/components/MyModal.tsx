@@ -29,11 +29,9 @@ const MyModal: FC<IProps> = ({ open, handleClose, children }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
-        { children }
-      </Box>
+      <Box sx={style}>{children}</Box>
     </Modal>
   );
-}
+};
 
 export default MyModal;

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Controller, Control } from "react-hook-form";
+import { Controller, Control } from 'react-hook-form';
 import { TextField } from '@mui/material';
 
 interface IProps {
@@ -10,23 +10,16 @@ interface IProps {
   className?: string;
 }
 
-const MyTextarea: FC <IProps> = ({ name, control, label, className }) => {
+const MyTextarea: FC<IProps> = ({ name, control, label, className }) => {
   return (
-    <Controller 
+    <Controller
       name={name}
       control={control}
-      render={({ field }) => 
-        <TextField 
-          {...field}
-          label={label}
-          variant='outlined'
-          multiline
-          rows={3}
-          className={className}
-        />
-      }
+      render={({ field }) => (
+        <TextField {...field} label={label} variant="outlined" multiline rows={3} className={className} />
+      )}
     />
   );
-}
+};
 
 export default MyTextarea;
