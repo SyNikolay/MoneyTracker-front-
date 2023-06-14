@@ -1,0 +1,30 @@
+.OutlayItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70px;
+  background-color: var(--dark-blue-2);
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.DiagramContainer {
+  height: 15px;
+  width: 90%;
+
+  .Diagram {
+    height: 100%;
+    border-radius: 5px;
+  }
+}
+
+.Ballance {
+  color: var(--brown);
+}

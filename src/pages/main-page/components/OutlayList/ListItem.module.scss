@@ -1,0 +1,27 @@
+.ListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  border: 1px solid var(--dark-blue);
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+
+  div:first-child {
+    margin-right: auto;
+  }
+
+  span:nth-child(2) {
+    margin-right: 20px;
+  }
+
+  .Title {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .Comment {
+    font-size: 14px;
+  }
+}
