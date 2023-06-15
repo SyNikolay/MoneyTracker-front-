@@ -11,7 +11,8 @@ export type OutlayFormType = {
   comment: string;
 };
 
-export type UserStore = {
+export type MainStore = {
+  user: any;
   fullBallance: number;
   fullOutlay: number;
   categories: Outlay[];
@@ -24,3 +25,20 @@ export type UserStore = {
   fetchAllOptions: () => void;
   fetchAllOutlays: () => void;
 };
+
+export type UserStore = {
+  user: IUser | null;
+  isAuth: boolean;
+  setUser: (val: IUser | null, auth: boolean) => void;
+};
+
+export type UserAuth = {
+  email: string;
+  password: string;
+};
+
+export interface IUser {
+  email: string | null;
+  id: number | null;
+  role: string | null;
+}

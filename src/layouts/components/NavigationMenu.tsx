@@ -1,16 +1,39 @@
-import React from 'react';
-
-import styles from './NavigationMenu.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Routes } from '../../utils/consts';
 
+import styles from './NavigationMenu.module.scss';
+import { useUser } from '../../store/UserStore';
+
 const NavigationMenu = () => {
+  const setUser = useUser((state) => state.setUser);
+  const isAuth = useUser((state) => state.isAuth);
+  const navigate = useNavigate();
+
+  const exit = () => {
+    localStorage.setItem('token', '');
+    setUser(null, false);
+    navigate('/auth');
+  };
   return (
     <div className={styles.NavigationMenu}>
-      <Link to={Routes.MAIN}>main</Link>
-      <Link to={Routes.CATEGORIES}>categories</Link>
-      <Link to={Routes.LIST}>list</Link>
-      <Link to={Routes.DIAGRAM}>diagram</Link>
+      <Link className={styles.NavigationMenu__link} to={Routes.MAIN}>
+        main
+      </Link>
+      <Link className={styles.NavigationMenu__link} to={Routes.CATEGORIES}>
+        categories
+      </Link>
+      <Link className={styles.NavigationMenu__link} to={Routes.LIST}>
+        list
+      </Link>
+      {isAuth && (
+        <Link className={styles.NavigationMenu__link} to={Routes.DIAGRAM}>
+          diagram
+        </Link>
+      )}
+      <Link className={styles.NavigationMenu__link} to={Routes.AUTH}>
+        auth
+      </Link>
+      <button onClick={() => exit()}>exit</button>
     </div>
   );
 };

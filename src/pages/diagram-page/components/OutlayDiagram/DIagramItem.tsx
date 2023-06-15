@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Outlay } from '../../../../types/types';
-import { useUser } from '../../../../store/UserStore';
+import { useMain } from '../../../../store/MainStore';
 
 import styles from './DIagramItem.module.scss';
 import { DIAGRAM_COLORS } from '../../../../utils/consts';
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const DIagramItem: FC<IProps> = ({ item, idx }) => {
-  const fullOutlay = useUser((state) => state.fullOutlay);
+  const fullOutlay = useMain((state) => state.fullOutlay);
   const percent = Math.floor((item.balance / fullOutlay) * 1000) / 10;
 
   return (

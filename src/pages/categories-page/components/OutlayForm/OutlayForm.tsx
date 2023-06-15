@@ -7,7 +7,7 @@ import { BASE_URL } from '../../../../utils/consts';
 import { Button } from '@mui/material';
 import MyInput from '../../../../components/MyInput';
 import MySelect from '../../../../components/MySelect';
-import { useUser } from '../../../../store/UserStore';
+import { useMain } from '../../../../store/MainStore';
 
 import styles from './OutlayForm.module.scss';
 import MyTextarea from '../../../../components/MyTextarea';
@@ -15,10 +15,10 @@ import { OutlayFormType } from '../../../../types/types';
 
 const OutlayForm = () => {
   const [open, setOpen] = useState(0);
-  const fetchAllCategories = useUser((state) => state.fetchAllCategories);
-  const fetchAllOutlays = useUser((state) => state.fetchAllOutlays);
-  const fetchAllOptions = useUser((state) => state.fetchAllOptions);
-  const selectOptions = useUser((state) => state.options);
+  const fetchAllCategories = useMain((state) => state.fetchAllCategories);
+  const fetchAllOutlays = useMain((state) => state.fetchAllOutlays);
+  const fetchAllOptions = useMain((state) => state.fetchAllOptions);
+  const selectOptions = useMain((state) => state.options);
 
   const { control, handleSubmit, reset, formState } = useForm<OutlayFormType>({
     defaultValues: {

@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-import { useUser } from '../../../../store/UserStore';
+import { useMain } from '../../../../store/MainStore';
 import { BASE_URL } from '../../../../utils/consts';
 import ListItem from './ListItem';
 
 import styles from './OutlayList.module.scss';
 
 const OutlayList = () => {
-  const fetchAllOutlays = useUser((state) => state.fetchAllOutlays);
-  const fetchAllCategories = useUser((state) => state.fetchAllCategories);
-  const loading = useUser((state) => state.loading);
-  const outlays = useUser((state) => state.outlays);
+  const fetchAllOutlays = useMain((state) => state.fetchAllOutlays);
+  const fetchAllCategories = useMain((state) => state.fetchAllCategories);
+  const loading = useMain((state) => state.loading);
+  const outlays = useMain((state) => state.outlays);
 
   useEffect(() => {
     fetchAllOutlays();

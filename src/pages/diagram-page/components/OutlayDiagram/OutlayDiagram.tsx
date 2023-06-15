@@ -1,22 +1,21 @@
 import { useEffect } from 'react';
 
-import { useUser } from '../../../../store/UserStore';
+import { useMain } from '../../../../store/MainStore';
 import DIagramItem from './DIagramItem';
 
 import styles from './OutlayDiagram.module.scss';
 
 const OutlayDiagram = () => {
-  const fetchAllCategories = useUser((state) => state.fetchAllCategories);
-  const setOutlay = useUser((state) => state.setOutlay);
-  const fullOutlay = useUser((state) => state.fullOutlay);
-  const categories = useUser((state) => state.categories);
+  const fetchAllCategories = useMain((state) => state.fetchAllCategories);
+  const setOutlay = useMain((state) => state.setOutlay);
+  const fullOutlay = useMain((state) => state.fullOutlay);
+  const categories = useMain((state) => state.categories);
 
   useEffect(() => {
     fetchAllCategories();
   }, [fetchAllCategories]);
 
   useEffect(() => {
-    console.log(categories);
     if (categories.length > 0) {
       let outlays = 0;
       categories.forEach((el) => {

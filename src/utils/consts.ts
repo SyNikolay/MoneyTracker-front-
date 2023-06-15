@@ -7,4 +7,5 @@ export enum Routes {
   CATEGORIES = '/categories',
   LIST = '/list',
   DIAGRAM = '/diagram',
+  AUTH = '/auth',
 }

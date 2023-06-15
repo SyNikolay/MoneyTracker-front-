@@ -1,0 +1,42 @@
+.AuthPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.ToggleFormButtonContainer {
+  width: 100%;
+}
+
+.ToggleFormButton {
+  display: inline-block;
+  width: 50%;
+  background-color: inherit;
+  border: none;
+  padding: 10px 20px;
+  color: var(--white-blue);
+  border-bottom: 1px solid var(--white-blue);
+  cursor: pointer;
+  transition: all ease 0.3s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__Active {
+    color: var(--blue);
+    border-color: var(--blue);
+  }
+}
+
+.AuthForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 250px;
+  padding: 35px 15px 10px;
+}
