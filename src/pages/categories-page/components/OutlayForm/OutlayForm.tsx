@@ -12,13 +12,19 @@ import { useMain } from '../../../../store/MainStore';
 import styles from './OutlayForm.module.scss';
 import MyTextarea from '../../../../components/MyTextarea';
 import { OutlayFormType } from '../../../../types/types';
+import { useUser } from '../../../../store/UserStore';
 
 const OutlayForm = () => {
   const [open, setOpen] = useState(0);
+  const userId = useUser((state) => state.user?.id);
   const fetchAllCategories = useMain((state) => state.fetchAllCategories);
   const fetchAllOutlays = useMain((state) => state.fetchAllOutlays);
   const fetchAllOptions = useMain((state) => state.fetchAllOptions);
   const selectOptions = useMain((state) => state.options);
+
+  useEffect(() => {
+    console.log(selectOptions);
+  }, [selectOptions]);
 
   const { control, handleSubmit, reset, formState } = useForm<OutlayFormType>({
     defaultValues: {
@@ -29,9 +35,9 @@ const OutlayForm = () => {
   });
 
   useEffect(() => {
-    fetchAllOptions();
-    fetchAllOutlays();
-  }, [fetchAllOptions, fetchAllOutlays]);
+    fetchAllOptions(userId);
+    fetchAllOutlays(userId);
+  }, [fetchAllOptions, fetchAllOutlays, userId]);
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
@@ -41,13 +47,13 @@ const OutlayForm = () => {
 
   const onSubmit = async (data: OutlayFormType) => {
     try {
-      await axios.post(BASE_URL + '/categories/create', data);
+      await axios.post(BASE_URL + '/categories/create', { ...data, userId });
     } catch (error) {
       console.log(error);
     } finally {
-      fetchAllCategories();
-      fetchAllOptions();
-      fetchAllOutlays();
+      fetchAllCategories(userId);
+      fetchAllOptions(userId);
+      fetchAllOutlays(userId);
     }
   };
 
@@ -70,7 +76,7 @@ const OutlayForm = () => {
       <form className={styles.OutlayForm} onSubmit={handleSubmit(onSubmit)}>
         {open === 0 ? (
           <MySelect
-            label={selectOptions.length === 0 ? 'Нет категорий' : 'Выберите категорию'}
+            label={!selectOptions.length ? 'Нет категорий' : 'Выберите категорию'}
             name="name"
             control={control}
             options={selectOptions}

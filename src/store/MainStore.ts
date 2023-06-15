@@ -4,7 +4,6 @@ import { BASE_URL } from '../utils/consts';
 import { MainStore } from '../types/types';
 
 export const useMain = create<MainStore>((set) => ({
-  user: {},
   fullBallance: 0,
   fullOutlay: 0,
   loading: false,
@@ -12,8 +11,15 @@ export const useMain = create<MainStore>((set) => ({
   outlays: [],
   options: [],
 
-  setUser: (val: any) => {
-    set({ user: val });
+  setReset: () => {
+    set({
+      fullBallance: 0,
+      fullOutlay: 0,
+      loading: false,
+      categories: [],
+      outlays: [],
+      options: [],
+    });
   },
   setBallance: (val) => {
     set({ fullBallance: val });
@@ -21,20 +27,10 @@ export const useMain = create<MainStore>((set) => ({
   setOutlay: (val) => {
     set({ fullOutlay: val });
   },
-  getUserInfo: async () => {
-    try {
-      const res = await axios.get(BASE_URL + '/categories/get-all');
-      set((state) => {
-        return { categories: res.data };
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  },
-  fetchAllCategories: async () => {
+  fetchAllCategories: async (userId) => {
     try {
       set({ loading: true });
-      const res = await axios.get(BASE_URL + '/categories/get-all');
+      const res = await axios.post(BASE_URL + '/categories/get-all', { userId: userId });
       set((state) => {
         return { categories: res.data };
       });
@@ -44,17 +40,17 @@ export const useMain = create<MainStore>((set) => ({
       set({ loading: false });
     }
   },
-  fetchAllOptions: async () => {
+  fetchAllOptions: async (userId) => {
     try {
-      const res = await axios.get(BASE_URL + '/categories/get-all-categories');
+      const res = await axios.post(BASE_URL + '/categories/get-all-categories', { userId: userId });
       set({ options: res.data });
     } catch (e) {
       console.log(e);
     }
   },
-  fetchAllOutlays: async () => {
+  fetchAllOutlays: async (userId) => {
     try {
-      const res = await axios.get(BASE_URL + '/outlays/get-all-outlays');
+      const res = await axios.post(BASE_URL + '/outlays/get-all-outlays', { userId: userId });
       set({ outlays: res.data });
     } catch (e) {
       console.log(e);

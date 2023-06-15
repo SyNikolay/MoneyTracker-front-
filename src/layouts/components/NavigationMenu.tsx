@@ -3,37 +3,45 @@ import { Routes } from '../../utils/consts';
 
 import styles from './NavigationMenu.module.scss';
 import { useUser } from '../../store/UserStore';
+import { useMain } from '../../store/MainStore';
 
 const NavigationMenu = () => {
   const setUser = useUser((state) => state.setUser);
+  const setReset = useMain((state) => state.setReset);
   const isAuth = useUser((state) => state.isAuth);
   const navigate = useNavigate();
 
   const exit = () => {
     localStorage.setItem('token', '');
     setUser(null, false);
+    setReset();
     navigate('/auth');
   };
   return (
     <div className={styles.NavigationMenu}>
-      <Link className={styles.NavigationMenu__link} to={Routes.MAIN}>
-        main
-      </Link>
-      <Link className={styles.NavigationMenu__link} to={Routes.CATEGORIES}>
-        categories
-      </Link>
-      <Link className={styles.NavigationMenu__link} to={Routes.LIST}>
-        list
-      </Link>
       {isAuth && (
-        <Link className={styles.NavigationMenu__link} to={Routes.DIAGRAM}>
-          diagram
+        <>
+          {/* Придумать контент
+          <Link className={styles.NavigationMenu__link} to={Routes.MAIN}>
+            main
+          </Link> */}
+          <Link className={styles.NavigationMenu__link} to={Routes.CATEGORIES}>
+            categories
+          </Link>
+          <Link className={styles.NavigationMenu__link} to={Routes.LIST}>
+            list
+          </Link>
+          <Link className={styles.NavigationMenu__link} to={Routes.DIAGRAM}>
+            diagram
+          </Link>
+        </>
+      )}
+      {!isAuth && (
+        <Link className={styles.NavigationMenu__link} to={Routes.AUTH}>
+          auth
         </Link>
       )}
-      <Link className={styles.NavigationMenu__link} to={Routes.AUTH}>
-        auth
-      </Link>
-      <button onClick={() => exit()}>exit</button>
+      {isAuth && <button onClick={() => exit()}>exit</button>}
     </div>
   );
 };

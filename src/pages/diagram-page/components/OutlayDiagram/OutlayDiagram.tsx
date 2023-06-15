@@ -4,16 +4,18 @@ import { useMain } from '../../../../store/MainStore';
 import DIagramItem from './DIagramItem';
 
 import styles from './OutlayDiagram.module.scss';
+import { useUser } from '../../../../store/UserStore';
 
 const OutlayDiagram = () => {
   const fetchAllCategories = useMain((state) => state.fetchAllCategories);
   const setOutlay = useMain((state) => state.setOutlay);
   const fullOutlay = useMain((state) => state.fullOutlay);
   const categories = useMain((state) => state.categories);
+  const userId = useUser((state) => state.user?.id);
 
   useEffect(() => {
-    fetchAllCategories();
-  }, [fetchAllCategories]);
+    fetchAllCategories(userId);
+  }, [fetchAllCategories, userId]);
 
   useEffect(() => {
     if (categories.length > 0) {

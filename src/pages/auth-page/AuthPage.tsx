@@ -16,7 +16,7 @@ import { login, registration } from '../../api/userApi';
 import styles from './AuthPage.module.scss';
 
 const AuthPage = () => {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(1);
   const setUser = useUser((state) => state.setUser);
   const navigate = useNavigate();
 
