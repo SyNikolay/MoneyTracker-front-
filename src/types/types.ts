@@ -12,18 +12,18 @@ export type OutlayFormType = {
 };
 
 export type MainStore = {
-  user: any;
   fullBallance: number;
   fullOutlay: number;
   categories: Outlay[];
   options: string[];
   outlays: Outlay[];
   loading: boolean;
+  setReset: () => void;
   setBallance: (val: number) => void;
   setOutlay: (val: number) => void;
   fetchAllCategories: (val?: any) => void;
-  fetchAllOptions: () => void;
-  fetchAllOutlays: () => void;
+  fetchAllOptions: (val?: any) => void;
+  fetchAllOutlays: (val?: any) => void;
 };
 
 export type UserStore = {

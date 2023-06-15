@@ -23,11 +23,12 @@ const MySelect: FC<IProps> = ({ name, control, label, options, disabled }) => {
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">{label}</InputLabel>
           <Select {...field} label={label} disabled={disabled}>
-            {options.map((el) => (
-              <MenuItem key={el} value={el}>
-                {el}
-              </MenuItem>
-            ))}
+            {options.length &&
+              options.map((el) => (
+                <MenuItem key={el} value={el}>
+                  {el}
+                </MenuItem>
+              ))}
           </Select>
         </FormControl>
       )}

@@ -8,6 +8,13 @@ import AuthPage from './pages/auth-page/AuthPage';
 
 export const publicRoutes = [
   {
+    path: Routes.AUTH,
+    component: AuthPage,
+  },
+];
+
+export const authRoutes = [
+  {
     path: Routes.MAIN,
     component: MainPage,
   },
@@ -19,23 +26,8 @@ export const publicRoutes = [
     path: Routes.LIST,
     component: ListPage,
   },
-  // {
-  //   path: Routes.DIAGRAM,
-  //   component: DiagramPage,
-  // },
-  {
-    path: Routes.AUTH,
-    component: AuthPage,
-  },
-];
-
-export const authRoutes = [
   {
     path: Routes.DIAGRAM,
     component: DiagramPage,
-  },
-  {
-    path: Routes.AUTH,
-    component: AuthPage,
   },
 ];
