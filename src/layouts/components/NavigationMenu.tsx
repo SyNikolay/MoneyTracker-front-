@@ -21,25 +21,16 @@ const NavigationMenu = () => {
     <div className={styles.NavigationMenu}>
       {isAuth && (
         <>
-          {/* Придумать контент
-          <Link className={styles.NavigationMenu__link} to={Routes.MAIN}>
-            main
-          </Link> */}
           <Link className={styles.NavigationMenu__link} to={Routes.CATEGORIES}>
             categories
           </Link>
           <Link className={styles.NavigationMenu__link} to={Routes.LIST}>
-            list
+            history
           </Link>
           <Link className={styles.NavigationMenu__link} to={Routes.DIAGRAM}>
             diagram
           </Link>
         </>
-      )}
-      {!isAuth && (
-        <Link className={styles.NavigationMenu__link} to={Routes.AUTH}>
-          auth
-        </Link>
       )}
       {isAuth && <button onClick={() => exit()}>exit</button>}
     </div>

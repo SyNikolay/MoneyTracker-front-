@@ -1,5 +1,11 @@
 .NavigationMenu {
+  display: flex;
+  align-items: center;
+  background-color: var(--dark-blue);
+  width: 100%;
+
   &__link {
+    color: var(--white);
     padding: 10px 15px;
     text-decoration: none;
   }

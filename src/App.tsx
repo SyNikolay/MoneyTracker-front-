@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 
 import MaitLayout from './layouts/MaitLayout';
@@ -17,6 +17,7 @@ function App() {
             <Route key={i} path={el.path} Component={el.component} />
           ))}
           {isAuth && authRoutes.map((el, i) => <Route key={i} path={el.path} Component={el.component} />)}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </MaitLayout>
     </BrowserRouter>
