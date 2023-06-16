@@ -6,6 +6,7 @@ export const useUser = create<UserStore>((set) => ({
     email: null,
     id: null,
     role: null,
+    ballance: null,
   },
   isAuth: false,
 

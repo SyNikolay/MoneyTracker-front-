@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-import { useMain } from '../../../../store/MainStore';
 import { BASE_URL } from '../../../../utils/consts';
 import ListItem from './ListItem';
 
-import styles from './OutlayList.module.scss';
 import { useUser } from '../../../../store/UserStore';
+import { useMain } from '../../../../store/MainStore';
+
+import styles from './OutlayList.module.scss';
 
 const OutlayList = () => {
   const fetchAllOutlays = useMain((state) => state.fetchAllOutlays);
@@ -36,7 +37,7 @@ const OutlayList = () => {
         <p>Loading...</p>
       ) : (
         <div className={styles.ListTable}>
-          {outlays.map((el) => (
+          {outlays.reverse().map((el) => (
             <ListItem key={el.id} item={el} onClick={deleteCategory} />
           ))}
         </div>

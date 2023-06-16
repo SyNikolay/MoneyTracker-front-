@@ -35,7 +35,7 @@ const AuthPage = () => {
       const res = open === 0 ? await registration(email, password) : await login(email, password);
       setUser(res, true);
       reset();
-      navigate('/categories');
+      navigate('/');
       console.log(res);
     } catch (error) {
       console.error(error);
