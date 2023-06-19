@@ -44,7 +44,10 @@ export const useMain = create<MainStore>((set) => ({
     try {
       const res = await getOutlays(userId);
       console.log(res);
-      set({ outlays: res });
+      set({
+        outlays: res.outlays,
+        fullOutlay: res.sumOutlays,
+      });
     } catch (e) {
       console.log(e);
     }
