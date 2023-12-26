@@ -94,7 +94,7 @@ video {
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 article,
 aside,
@@ -115,7 +115,7 @@ section {
 }
 body {
   line-height: 1;
-  font-family: 'PF Din Display Pro Light', sans-serif;
+  font-family: 'PF Din Display Pro', sans-serif;
 }
 menu,
 ol,
@@ -140,4 +140,32 @@ table {
 
 * {
   box-sizing: border-box;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+html {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: var(--pale_grey);
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }

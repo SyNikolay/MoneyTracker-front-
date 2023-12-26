@@ -1,0 +1,73 @@
+.p1 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.p2 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.p3 {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.p4 {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.price {
+  font-size: 24px;
+}
+
+.bold {
+  font-family: 'PF Din Display Pro Bold', sans-serif;
+  letter-spacing: 0.3px;
+  font-weight: 700;
+}
+
+.light {
+  font-family: 'PF Din Display Pro Light', sans-serif;
+  letter-spacing: 0.3px;
+  font-weight: 300;
+}
+
+.medium {
+  font-family: 'PF Din Display Pro Medium', sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.block {
+  display: block;
+}
+
+.primary {
+  color: var(--black);
+}
+
+.secondary {
+  color: var(--cool-grey-blue);
+}
+
+.accent {
+  color: var(--dark-clear-blue1);
+}
+
+.info {
+  color: var(--orange-juice);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}

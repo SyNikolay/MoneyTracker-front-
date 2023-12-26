@@ -1,0 +1,87 @@
+.EditForm {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 20px;
+  }
+
+  &__field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__file {
+    height: 56px;
+  }
+
+  &__button {
+    display: inline-block;
+    margin: 0 auto;
+    max-width: fit-content;
+    align-self: center;
+  }
+}
+
+.input_file {
+  position: relative;
+	display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+
+  span {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    text-decoration: none;
+    font-size: 14px;
+    vertical-align: middle;
+    color: rgb(255 255 255);
+    text-align: center;
+    border-radius: 4px;
+    background-color: #419152;
+    line-height: 22px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    transition: background-color 0.2s;
+  }
+
+  input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+  }
+
+  input[type=file]:focus + span {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+
+  &:hover span {
+    background-color: #59be6e;
+  }
+
+  &:active span {
+    background-color: #2E703A;
+  }
+
+  input[type=file]:disabled + span {
+    background-color: #eee;
+  }
+}

@@ -1,16 +1,28 @@
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useMain } from '../../../store/MainStore';
+import { Button } from '@mui/material';
+
 import { useUser } from '../../../store/UserStore';
 
-import styles from './AccountPage.module.scss';
+import { BASE_URL } from '../../../utils/consts';
 
-const AccountInfo = () => {
+import styles from './AccountInfo.module.scss';
+import CategoriesManagement from './CategoriesManagement';
+
+interface IAccountInfo {
+  setOpen: () => void
+}
+
+const AccountInfo: FC<IAccountInfo> = ({setOpen}) => {
   const user = useUser();
-  const categories = useMain((state) => state.categories);
-  const outlays = useMain((state) => state.fullOutlay);
-  const fetchAllCategories = useMain((state) => state.fetchAllCategories);
-  const setOutlay = useMain((state) => state.setOutlay);
+  const setUser = useUser((state) => state.setUser);
+  const setReset = useUser((state) => state.setReset);
+  const navigate = useNavigate();
+  const categories = useUser((state) => state.categories);
+  const outlays = useUser((state) => state.fullOutlay);
+  const fetchAllCategories = useUser((state) => state.fetchAllCategories);
+  const setOutlay = useUser((state) => state.setOutlay);
 
   useEffect(() => {
     fetchAllCategories(user.user?.id);
@@ -31,28 +43,59 @@ const AccountInfo = () => {
     if (role === 'USER') return 'Пользователь';
   };
 
+  const exit = () => {
+    localStorage.setItem('token', '');
+    setUser(null, false);
+    setReset();
+    navigate('/auth');
+  };
+
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>E-mail:</td>
-            <td>{user.user?.email}</td>
-          </tr>
-          <tr>
-            <td>Роль</td>
-            <td>{getRole(user.user?.role!)}</td>
-          </tr>
-          <tr>
-            <td>Общая сумма расходов</td>
-            <td>{outlays}</td>
-          </tr>
-          <tr>
-            <td>Текущий баланс</td>
-            <td>{user.user?.ballance}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className={styles.AccountInfo}>
+      <div className={styles.AccountInfo__block1}>
+        <div className={styles.AccountInfo__avatar}>
+          <img src={user.user?.avatar ? BASE_URL + '/' + user.user?.avatar : `/img/team-placeholder.png`} alt="" />
+        </div>
+
+        <div className={styles.AccountInfo__info}>
+          <h3 className={styles.AccountInfo__infoTitle}>{user.user?.name && user.user?.surname ? `${user.user?.name} ${user.user?.surname}` : 'Неизвестный пользователь'}</h3>
+
+          <div className={styles.AccountInfo__infoRow}>
+            <span>E-mail</span>
+            <span>{user.user?.email}</span>
+          </div>
+          <div className={styles.AccountInfo__infoRow}>
+            <span>Роль</span>
+            <span>{getRole(user.user?.role!)}</span>
+          </div>
+          <div className={styles.AccountInfo__infoRow}>
+            <span>Общая сумма расходов</span>
+            <span>{outlays} руб.</span>
+          </div>
+          <div className={styles.AccountInfo__infoRow}>
+            <span>Текущий баланс</span>
+            <span>{user.user?.ballance} руб.</span>
+          </div>
+          <div className={styles.AccountInfo__infoRow}>
+            <span>Место работы</span>
+            <span>{user.user?.work}</span>
+          </div>
+          <div className={styles.AccountInfo__infoRow}>
+            <span>Ежемесячный доход</span>
+            <span>{user.user?.salary} руб.</span>
+          </div>
+
+        </div>
+      </div>
+      <div className={styles.AccountInfo__block2}>
+        <Button sx={{marginBottom: '10px'}} variant="outlined" onClick={() => setOpen()}>Редактировать аккаунт</Button>
+        {user.isAuth && <Button variant="outlined" onClick={() => exit()}>Выйти из аккаунта</Button>}
+      </div>
+      {!!categories.length && (
+        <div className={styles.AccountInfo__block3}>
+          <CategoriesManagement />
+        </div>
+      )}
     </div>
   );
 };

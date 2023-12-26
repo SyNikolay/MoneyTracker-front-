@@ -21,6 +21,9 @@ export const useMain = create<MainStore>((set) => ({
   setOutlay: (val) => {
     set({ fullOutlay: val });
   },
+  setCategories: (val) => {
+    set({ categories: val });
+  },  
   fetchAllCategories: async (userId) => {
     try {
       set({ loading: true });
@@ -43,7 +46,6 @@ export const useMain = create<MainStore>((set) => ({
   fetchAllOutlays: async (userId) => {
     try {
       const res = await getOutlays(userId);
-      console.log(res);
       set({
         outlays: res.outlays,
         fullOutlay: res.sumOutlays,

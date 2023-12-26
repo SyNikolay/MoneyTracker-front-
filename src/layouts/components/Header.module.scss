@@ -11,11 +11,20 @@
     position: absolute;
     display: block;
     text-decoration: none;
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    top: 6px;
+    top: 5px;
     right: 16px;
     background-color: var(--white);
+  }
+
+  &__avatar {
+    display: block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--pale_grey);
+    object-fit: cover;
   }
 }
