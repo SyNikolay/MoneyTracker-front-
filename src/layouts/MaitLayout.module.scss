@@ -1,23 +1,30 @@
 .Layout {
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 1000px;
   margin: 0 auto;
-  height: 100%;
+  padding: 40px 0;
 }
 
 .Header {
+  position: fixed;
+  top: 0;
+  width: 1000px;
   color: var(--white);
   background-color: var(--blue);
 }
 
 .Content {
   flex: 1 1 auto;
-  padding: 15px 50px;
+  padding: 25px 0px;
 }
 
 .Footer {
+  position: fixed;
+  bottom: 0;
   display: flex;
   align-items: center;
+  width: 1000px;
   height: 40px;
 }

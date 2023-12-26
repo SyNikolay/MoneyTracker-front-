@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
-
-import { BASE_URL } from '../../../../utils/consts';
+import { useEffect } from 'react';
 import ListItem from './ListItem';
 
 import { useUser } from '../../../../store/UserStore';
-import { useMain } from '../../../../store/MainStore';
+
+import { deleteOutlay } from '../../../../api/outlaysApi';
 
 import styles from './OutlayList.module.scss';
 
 const OutlayList = () => {
-  const fetchAllOutlays = useMain((state) => state.fetchAllOutlays);
-  const fetchAllCategories = useMain((state) => state.fetchAllCategories);
-  const loading = useMain((state) => state.loading);
-  const outlays = useMain((state) => state.outlays);
+  const setUser = useUser(state => state.setUser)
+  const fetchAllOutlays = useUser((state) => state.fetchAllOutlays);
+  const fetchAllCategories = useUser((state) => state.fetchAllCategories);
+  const loading = useUser((state) => state.loading);
+  const outlays = useUser((state) => state.outlays);
   const userId = useUser((state) => state.user?.id);
 
   useEffect(() => {
@@ -22,7 +21,8 @@ const OutlayList = () => {
 
   const deleteCategory = async (name: string) => {
     try {
-      await axios.post(BASE_URL + '/outlays/delete', { name: name, userId: userId });
+      const res = await deleteOutlay(name, userId!);
+      setUser(res, true)
     } catch (error) {
       console.log(error);
     } finally {

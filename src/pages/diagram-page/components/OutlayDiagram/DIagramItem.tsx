@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
-import { Outlay } from '../../../../types/types';
-import { useMain } from '../../../../store/MainStore';
+import { FC } from 'react';
+
+import { useMain } from 'store';
+import { Outlay } from 'types';
+
+import { DIAGRAM_COLORS } from 'utils';
 
 import styles from './DIagramItem.module.scss';
-import { DIAGRAM_COLORS } from '../../../../utils/consts';
 
 interface IProps {
   item: Outlay;

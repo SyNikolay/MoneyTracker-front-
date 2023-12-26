@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+export * from './outlaysApi';
+export * from './userApi';
+
 const host = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
 });

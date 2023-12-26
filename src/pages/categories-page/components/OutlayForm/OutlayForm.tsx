@@ -1,30 +1,25 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
-import { BASE_URL } from '../../../../utils/consts';
 import { Button } from '@mui/material';
 import MyInput from '../../../../components/MyInput';
 import MySelect from '../../../../components/MySelect';
-import { useMain } from '../../../../store/MainStore';
 
 import styles from './OutlayForm.module.scss';
 import MyTextarea from '../../../../components/MyTextarea';
 import { OutlayFormType } from '../../../../types/types';
 import { useUser } from '../../../../store/UserStore';
+import { getCategory } from '../../../../api/outlaysApi';
 
 const OutlayForm = () => {
   const [open, setOpen] = useState(0);
   const userId = useUser((state) => state.user?.id);
-  const fetchAllCategories = useMain((state) => state.fetchAllCategories);
-  const fetchAllOutlays = useMain((state) => state.fetchAllOutlays);
-  const fetchAllOptions = useMain((state) => state.fetchAllOptions);
-  const selectOptions = useMain((state) => state.options);
-
-  useEffect(() => {
-    console.log(selectOptions);
-  }, [selectOptions]);
+  const setUser = useUser((state) => state.setUser)
+  const fetchAllCategories = useUser((state) => state.fetchAllCategories);
+  const fetchAllOutlays = useUser((state) => state.fetchAllOutlays);
+  const fetchAllOptions = useUser((state) => state.fetchAllOptions);
+  const selectOptions = useUser((state) => state.options);
 
   const { control, handleSubmit, reset, formState } = useForm<OutlayFormType>({
     defaultValues: {
@@ -47,7 +42,8 @@ const OutlayForm = () => {
 
   const onSubmit = async (data: OutlayFormType) => {
     try {
-      await axios.post(BASE_URL + '/categories/create', { ...data, userId });
+      const res = await getCategory(data, userId!);
+      setUser(res, true);
     } catch (error) {
       console.log(error);
     } finally {

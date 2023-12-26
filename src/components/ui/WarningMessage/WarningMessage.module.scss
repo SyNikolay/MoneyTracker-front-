@@ -1,0 +1,21 @@
+.Warning {
+  display: flex;
+  align-items: flex-start;
+}
+
+.WarningIcon,
+.WarningText {
+  fill: var(--orange-juice);
+  color: var(--orange-juice);
+}
+
+.ErrorIcon,
+.ErrorText {
+  fill: var(--red);
+  color: var(--red);
+}
+
+.ErrorText,
+.WarningText {
+  margin-left: 5px;
+}

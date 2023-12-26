@@ -1,15 +1,20 @@
 .AccountPage {
-  &__title {
-    font-size: 24px;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
+  }
+
+  &__title {
+    width: 100%;
+    padding: 15px 20px;
+    box-shadow: 0 3px 10px 0 var(--dark_blue_0_05);
   }
 
   &__content {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-
-    div {
-      flex-basis: 50%;
-    }
   }
 }
